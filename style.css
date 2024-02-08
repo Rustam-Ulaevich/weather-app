@@ -38,17 +38,19 @@ body {
   max-width: 580px;
   padding: 0 10px;
   height: 100vh;
-  background-color: rgb(3, 195, 195);
   gap: 20px;
+  transition: grid-template-rows 0.4s;
 }
 
 .app__container__top {
-  /* background-color: rgb(251, 92, 92); */
+  grid-template-rows: 84px auto;
+}
+
+.app__container__top {
   align-self: flex-end;
 }
 
 .app__container__bottom {
-  background-color: rgb(109, 255, 118);
 }
 
 .location-form {
@@ -147,12 +149,12 @@ body {
   transition: box-shadow 0.4s, width 0.4s, height 0.4s, animation.4s,
     background-color.4s, backdrop-filter 0.4s, color 0.4s;
   will-change: widt, height, transform, filter, backdrop-filter;
-  /* width: 0px;
-  height: 0px; */
+  width: 0px;
+  height: 0px;
   overflow: hidden;
   margin: 0 auto;
   margin-bottom: 20px;
-  /* transform: scale(0); */
+  transform: scale(0);
 }
 
 .card__inner {
@@ -181,7 +183,7 @@ body {
 }
 
 .card__head-right {
-  flex-basis: 100px;
+  /* flex-basis: 200px; */
 }
 
 .card__icon {
@@ -255,8 +257,9 @@ body {
   /* opacity: 0; */
 }
 
-.card-param-text {
-  font-size: 28px;
+.card-param-icon_footer {
+  width: 26px;
+  height: 26px;
 }
 
 .card-param-text_footer {
@@ -264,11 +267,99 @@ body {
 }
 
 /* Загрузка */
+
 .card.loading {
   width: 30px;
   height: 30px;
   transform: scale(1);
+  animation: pulse 2s infinte;
 }
 
 @keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.card.full {
+  width: 100%;
+  height: 170px;
+  animation: none;
+  transform: scale(1);
+}
+
+.card.full .card__inner {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.card.full .card__inner {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Стандартная */
+
+.card.glass {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.08);
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+  backdrop-filter: blur(6.6px);
+  /* border: 1px solid rgba(255, 255, 255, 0.33); */
+  color: white;
+  height: 80px;
+  width: 100%;
+}
+
+.card.glass .card-param__icon {
+  fill: white;
+}
+
+.card.glass .card__inner {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.card.glass .card__title {
+  transform: none;
+}
+
+.card.glass .card__desc {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.card.glass .card__icon {
+  width: 42px;
+  height: 42px;
+  filter: grayscale(1);
+}
+
+.card.glass:hover {
+  height: 170px;
+  background-color: rgba(33, 33, 33, 0.3);
+}
+
+.card.glass:hover .card__title {
+  transform: translateY(-12px);
+}
+
+.card.glass:hover .card__icon {
+  width: 80px;
+  height: 80px;
+}
+
+.card.glass:hover .card__desc {
+  opacity: 1;
+  visibility: visible;
+}
+
+.card.glass:hover {
+  opacity: 0.6;
 }
